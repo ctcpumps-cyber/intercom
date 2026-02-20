@@ -2,7 +2,7 @@ TRAC ADDRESS : trac1wm0p0rekeacqe46wa4huhzd6p3tksdmnwxg52gn8nu9vfv2zxt9qwhc2mm
 
 
 PROOF OF WORK : 
-![Deskripsi Gambar](images/gambar.png)
+![Deskripsi Gambar](Screenshot_2026_0220_233800.jpg)
 
 
 
@@ -156,3 +156,11 @@ JSON
 }
 
 
+
+📈 Performance Considerations
+
+
+•CoinGecko API rate limits apply
+•In-memory storage resets on restart
+•Suitable for MVP, PoC, and early-stage deployment
+•Recommended database integration for scaling
