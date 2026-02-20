@@ -1,81 +1,135 @@
-# Intercom
+🚀 Proof of Hold Tracker
 
-This repository is a reference implementation of the **Intercom** stack on Trac Network for an **internet of agents**.
+A production-ready crypto monitoring platform featuring a proprietary Proof-of-Hold™ scoring engine, designed for extensibility, scalability, and Web3 integration.
 
-At its core, Intercom is a **peer-to-peer (P2P) network**: peers discover each other and communicate directly (with optional relaying) over the Trac/Holepunch stack (Hyperswarm/HyperDHT + Protomux). There is no central server required for sidechannel messaging.
 
-Features:
-- **Sidechannels**: fast, ephemeral P2P messaging (with optional policy: welcome, owner-only write, invites, PoW, relaying).
-- **SC-Bridge**: authenticated local WebSocket control surface for agents/tools (no TTY required).
-- **Contract + protocol**: deterministic replicated state and optional chat (subnet plane).
-- **MSB client**: optional value-settled transactions via the validator network.
+📖 Executive Summary
 
-Additional references: https://www.moltbook.com/post/9ddd5a47-4e8d-4f01-9908-774669a11c21 and moltbook m/intercom
+Proof of Hold Tracker is a modern crypto analytics platform that gamifies long-term holding behavior through a dynamic scoring mechanism based on real-time market data and holding duration.
 
-For full, agent‑oriented instructions and operational guidance, **start with `SKILL.md`**.  
-It includes setup steps, required runtime, first‑run decisions, and operational notes.
+Built with a modular Node.js architecture, the platform is optimized for:
+•Scalability
+•API extensibility
+•Web3 readiness
+•Cloud deployment
+•Microservice evolution
 
-## Awesome Intercom
 
-For a curated list of agentic Intercom apps check out: https://github.com/Trac-Systems/awesome-intercom
+🎯 Business Value Proposition
 
-## What this repo is for
-- A working, pinned example to bootstrap agents and peers onto Trac Network.
-- A template that can be trimmed down for sidechannel‑only usage or extended for full contract‑based apps.
+Traditional crypto trackers focus solely on price visibility.
 
-## How to use
-Use the **Pear runtime only** (never native node).  
-Follow the steps in `SKILL.md` to install dependencies, run the admin peer, and join peers correctly.
 
-## Architecture (ASCII map)
-Intercom is a single long-running Pear process that participates in three distinct networking "planes":
-- **Subnet plane**: deterministic state replication (Autobase/Hyperbee over Hyperswarm/Protomux).
-- **Sidechannel plane**: fast ephemeral messaging (Hyperswarm/Protomux) with optional policy gates (welcome, owner-only write, invites).
-- **MSB plane**: optional value-settled transactions (Peer -> MSB client -> validator network).
+Proof of Hold introduces:
 
-```text
-                          Pear runtime (mandatory)
-                pear run . --peer-store-name <peer> --msb-store-name <msb>
-                                        |
-                                        v
-  +-------------------------------------------------------------------------+
-  |                            Intercom peer process                         |
-  |                                                                         |
-  |  Local state:                                                          |
-  |  - stores/<peer-store-name>/...   (peer identity, subnet state, etc)    |
-  |  - stores/<msb-store-name>/...    (MSB wallet/client state)             |
-  |                                                                         |
-  |  Networking planes:                                                     |
-  |                                                                         |
-  |  [1] Subnet plane (replication)                                         |
-  |      --subnet-channel <name>                                            |
-  |      --subnet-bootstrap <admin-writer-key-hex>  (joiners only)          |
-  |                                                                         |
-  |  [2] Sidechannel plane (ephemeral messaging)                             |
-  |      entry: 0000intercom   (name-only, open to all)                     |
-  |      extras: --sidechannels chan1,chan2                                 |
-  |      policy (per channel): welcome / owner-only write / invites         |
-  |      relay: optional peers forward plaintext payloads to others          |
-  |                                                                         |
-  |  [3] MSB plane (transactions / settlement)                               |
-  |      Peer -> MsbClient -> MSB validator network                          |
-  |                                                                         |
-  |  Agent control surface (preferred):                                     |
-  |  SC-Bridge (WebSocket, auth required)                                   |
-  |    JSON: auth, send, join, open, stats, info, ...                       |
-  +------------------------------+------------------------------+-----------+
-                                 |                              |
-                                 | SC-Bridge (ws://host:port)   | P2P (Hyperswarm)
-                                 v                              v
-                       +-----------------+            +-----------------------+
-                       | Agent / tooling |            | Other peers (P2P)     |
-                       | (no TTY needed) |<---------->| subnet + sidechannels |
-                       +-----------------+            +-----------------------+
+📊 Behavioral engagement scoring
+🏆 Competitive leaderboard potential
+🎮 Gamification layer for Web3 communities
+🪙 NFT-based achievement systems
+📈 DAO & DeFi integration possibilities
 
-  Optional for local testing:
-  - --dht-bootstrap "<host:port,host:port>" overrides the peer's HyperDHT bootstraps
-    (all peers that should discover each other must use the same list).
-```
 
----
-If you plan to build your own app, study the existing contract/protocol and remove example logic as needed (see `SKILL.md`).
+This framework can be positioned as:
+
+Community engagement infrastructure
+Token utility extension system
+Gamified retention engine
+Web3 loyalty program foundation
+
+
+🧠 Core Feature: Proof-of-Hold™ Engine
+
+Concept
+
+The proprietary scoring algorithm calculates performance based on:
+
+Hold Score = (Current Price - Entry Price) × Holding Duration
+
+Engine Capabilities
+
+•Real-time price tracking
+•Per-wallet state management
+•Dynamic duration tracking
+•Extendable scoring logic
+•API-first architecture
+
+🏗 System Architecture
+
+High-Level Architecture
+Client (Browser / Mobile)
+        │
+        ▼
+Express API Layer
+        │
+        ▼
+Scoring Engine Module
+        │
+        ▼
+External Market API (CoinGecko)
+
+
+Modular Expansion (Future-Ready)
+
+•Database Layer (MongoDB / PostgreSQL)
+•Redis Caching
+•Authentication Service (JWT / OAuth)
+•Web3 Adapter (Web3.js / Ethers.js)
+•Microservice Separation
+•Containerization (Docker)
+•CI/CD Pipeline Integration
+
+📂 Enterprise-Ready Structure
+
+crypto-web/
+│
+├── server.js
+├── package.json
+├── README.md
+│
+├── /public
+│   └── index.html
+│
+└── /future-modules
+    ├── auth/
+    ├── database/
+    ├── leaderboard/
+    └── web3/
+
+
+    ⚙️ Deployment Guide (Termux Environment)
+  
+    
+1. Environment Preparation
+   pkg update && pkg upgrade -y
+pkg install nodejs git -y
+
+2. Project Initialization
+   mkdir crypto-web
+cd crypto-web
+npm init -y
+npm install express axios
+
+3. Application Launch
+node server.js
+
+🧪 API Documentation
+
+Endpoint: POST /api/hold
+Request
+{
+  "address": "wallet123",
+  "coin": "bitcoin"
+}
+
+Response
+
+
+JSON
+Salin kode
+{
+  "price": 65000,
+  "duration": 120,
+  "score": 5400.55
+}
+
+
