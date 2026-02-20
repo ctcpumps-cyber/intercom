@@ -1,3 +1,11 @@
+TRAC ADDRESS : trac1wm0p0rekeacqe46wa4huhzd6p3tksdmnwxg52gn8nu9vfv2zxt9qwhc2mm
+
+
+PROOF OF WORK : 
+![Deskripsi Gambar](images/gambar.png)
+
+
+
 🚀 Proof of Hold Tracker
 
 A production-ready crypto monitoring platform featuring a proprietary Proof-of-Hold™ scoring engine, designed for extensibility, scalability, and Web3 integration.
@@ -107,7 +115,7 @@ crypto-web/
 pkg update && pkg upgrade -y
 pkg install nodejs git -y
 
-3. Project Initialization
+2. Project Initialization
 
    
 mkdir crypto-web
@@ -115,7 +123,7 @@ cd crypto-web
 npm init -y
 npm install express axios
 
-5. Application Launch
+3. Application Launch
 
 
 node server.js
