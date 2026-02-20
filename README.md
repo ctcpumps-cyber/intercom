@@ -8,6 +8,8 @@ A production-ready crypto monitoring platform featuring a proprietary Proof-of-H
 Proof of Hold Tracker is a modern crypto analytics platform that gamifies long-term holding behavior through a dynamic scoring mechanism based on real-time market data and holding duration.
 
 Built with a modular Node.js architecture, the platform is optimized for:
+
+
 •Scalability
 •API extensibility
 •Web3 readiness
@@ -100,22 +102,34 @@ crypto-web/
   
     
 1. Environment Preparation
-   pkg update && pkg upgrade -y
+
+   
+pkg update && pkg upgrade -y
 pkg install nodejs git -y
 
-2. Project Initialization
-   mkdir crypto-web
+3. Project Initialization
+
+   
+mkdir crypto-web
 cd crypto-web
 npm init -y
 npm install express axios
 
-3. Application Launch
+5. Application Launch
+
+
 node server.js
+
+
 
 🧪 API Documentation
 
 Endpoint: POST /api/hold
+
+
 Request
+
+
 {
   "address": "wallet123",
   "coin": "bitcoin"
@@ -125,7 +139,8 @@ Response
 
 
 JSON
-Salin kode
+
+
 {
   "price": 65000,
   "duration": 120,
